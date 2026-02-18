@@ -1,0 +1,11 @@
+# Snowflake Chione 2026 — Python Dependencies
+# Core simulation and visualization
+numpy==1.26.4
+matplotlib==3.6.3
+pillow==10.2.0
+pandas==2.3.3
+scipy==1.11.4
+seaborn==0.13.2
+
+# Optional: GPU acceleration (requires NVIDIA GPU + CUDA toolkit)
+# numba==0.63.1
