@@ -1,0 +1,22 @@
+=== Shape Analysis ===
+Alpha:   1.6743
+Gamma:   0.004958
+Beta:    0.6159
+Steps (Target): 618
+
+--- Metrics ---
+Area:                  27457
+Perimeter:             27457
+Ratio (A/πR²):         0.2903
+Compactness (P²/A):    27457.00
+CompactnessNorm (4πA/P²): 0.0013
+Max Radius:            173.52
+Branching Factor:      14.80
+Steps (Actual):        618
+Growth Rate:           44.4288
+
+--- Classification ---
+Shape Class: Sparse Dendrite
+
+--- Notes ---
+• Very fractal/branched boundary — dendritic growth dominant.

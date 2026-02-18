@@ -1,0 +1,23 @@
+=== Shape Analysis ===
+Alpha:   0.0097
+Gamma:   0.000978
+Beta:    0.3676
+Steps (Target): 465
+
+--- Metrics ---
+Area:                  7
+Perimeter:             7
+Ratio (A/πR²):         1.1141
+Compactness (P²/A):    7.00
+CompactnessNorm (4πA/P²): 0.2715
+Max Radius:            1.41
+Branching Factor:      2.03
+Steps (Actual):        369
+Growth Rate:           0.0190
+
+--- Classification ---
+Shape Class: No Growth
+
+--- Notes ---
+• Moderate complexity — transitional morphology.
+• Minimal branching — smooth faceted edges.

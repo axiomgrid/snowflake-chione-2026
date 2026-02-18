@@ -1,0 +1,25 @@
+=== Shape Analysis ===
+Alpha:   1.2382
+Gamma:   0.026728
+Beta:    0.1717
+Steps (Target): 399
+
+--- Metrics ---
+Area:                  955
+Perimeter:             955
+Ratio (A/πR²):         0.6594
+Compactness (P²/A):    955.00
+CompactnessNorm (4πA/P²): 0.1646
+Max Radius:            21.47
+Branching Factor:      2.00
+Steps (Actual):        398
+Growth Rate:           2.3995
+
+--- Classification ---
+Shape Class: Faceted Crystal
+
+--- Notes ---
+• Very fractal/branched boundary — dendritic growth dominant.
+• Minimal branching — smooth faceted edges.
+• Low beta (humidity) — sparse growth environment.
+• High gamma — fast vapor addition, complex growth likely.

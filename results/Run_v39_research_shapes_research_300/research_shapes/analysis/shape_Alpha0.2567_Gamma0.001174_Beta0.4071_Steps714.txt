@@ -1,0 +1,23 @@
+=== Shape Analysis ===
+Alpha:   0.2567
+Gamma:   0.001174
+Beta:    0.4071
+Steps (Target): 714
+
+--- Metrics ---
+Area:                  247
+Perimeter:             247
+Ratio (A/πR²):         0.4368
+Compactness (P²/A):    247.00
+CompactnessNorm (4πA/P²): 0.0426
+Max Radius:            13.42
+Branching Factor:      3.20
+Steps (Actual):        704
+Growth Rate:           0.3509
+
+--- Classification ---
+Shape Class: Hybrid / Transition
+
+--- Notes ---
+• Very fractal/branched boundary — dendritic growth dominant.
+• Minimal branching — smooth faceted edges.

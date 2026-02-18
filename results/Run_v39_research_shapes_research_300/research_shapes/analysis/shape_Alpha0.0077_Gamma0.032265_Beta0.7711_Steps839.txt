@@ -1,0 +1,25 @@
+=== Shape Analysis ===
+Alpha:   0.0077
+Gamma:   0.032265
+Beta:    0.7711
+Steps (Target): 839
+
+--- Metrics ---
+Area:                  40273
+Perimeter:             40273
+Ratio (A/πR²):         0.7218
+Compactness (P²/A):    40273.00
+CompactnessNorm (4πA/P²): 0.2162
+Max Radius:            133.27
+Branching Factor:      1.83
+Steps (Actual):        839
+Growth Rate:           48.0012
+
+--- Classification ---
+Shape Class: Faceted Crystal
+
+--- Notes ---
+• Moderate complexity — transitional morphology.
+• Minimal branching — smooth faceted edges.
+• High beta (humidity) — vigorous growth expected.
+• High gamma — fast vapor addition, complex growth likely.

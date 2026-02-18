@@ -1,0 +1,24 @@
+=== Shape Analysis ===
+Alpha:   1.2853
+Gamma:   0.000093
+Beta:    0.6526
+Steps (Target): 1446
+
+--- Metrics ---
+Area:                  73934
+Perimeter:             73934
+Ratio (A/πR²):         0.1838
+Compactness (P²/A):    73934.00
+CompactnessNorm (4πA/P²): 0.0000
+Max Radius:            357.78
+Branching Factor:      80.92
+Steps (Actual):        1446
+Growth Rate:           51.1300
+
+--- Classification ---
+Shape Class: Dendrite (Star)
+
+--- Notes ---
+• Very fractal/branched boundary — dendritic growth dominant.
+• Extreme branching detected — highly intricate arms.
+• Very low gamma — tendency toward simple plate morphology.

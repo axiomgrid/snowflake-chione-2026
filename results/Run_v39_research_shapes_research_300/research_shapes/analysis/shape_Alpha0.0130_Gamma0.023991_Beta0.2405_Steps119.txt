@@ -1,0 +1,25 @@
+=== Shape Analysis ===
+Alpha:   0.0130
+Gamma:   0.023991
+Beta:    0.2405
+Steps (Target): 119
+
+--- Metrics ---
+Area:                  37
+Perimeter:             37
+Ratio (A/πR²):         0.9060
+Compactness (P²/A):    37.00
+CompactnessNorm (4πA/P²): 0.2636
+Max Radius:            3.61
+Branching Factor:      1.85
+Steps (Actual):        95
+Growth Rate:           0.3895
+
+--- Classification ---
+Shape Class: No Growth
+
+--- Notes ---
+• Moderate complexity — transitional morphology.
+• Minimal branching — smooth faceted edges.
+• High gamma — fast vapor addition, complex growth likely.
+• Short simulation run — preventing boundary saturation.
