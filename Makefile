@@ -1,8 +1,8 @@
 # Snowflake Chione 2026 — Makefile
 # Generates snowflake crystal simulations (MP4, PNG, CSV)
 
-PYTHON := python3
-PIP := pip3
+PYTHON := venv/bin/python3
+PIP := venv/bin/pip3
 
 .PHONY: help setup test scan scan-parallel research clean docker-build docker-run
 
@@ -19,7 +19,8 @@ help:
 	@echo "  make docker-run     — Run the scan inside Docker"
 
 setup:
-	@echo ">> Installing dependencies..."
+	@echo ">> Creating virtual environment and installing dependencies..."
+	python3 -m venv venv
 	$(PIP) install -r requirements.txt
 	@echo ">> Done. Ensure FFmpeg is installed: apt install ffmpeg (Linux) or brew install ffmpeg (macOS)"
 
