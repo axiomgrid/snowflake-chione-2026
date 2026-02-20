@@ -28,17 +28,77 @@ Key connections to literature:
 
 ## ⚙️ Physics Engine & Methodology
 
-The core of the simulation is a **Real-Valued Cellular Automata** operating on a hexagonal grid. The state of each cell is defined by a continuous variable $s(x,y)$ representing the water mass/vapour density.
+The heart of `snowflake-chione-2026` is its physics engine, governed entirely by the `engine.py` module. It implements a non-equilibrium, real-valued Cellular Automata algorithm inspired by the Reiter model.
 
-### 1. The Numerical Method
-The system evolves in discrete time steps ($t$) according to three rules:
-1.  **Diffusion**: Vapour diffuses to neighbouring cells (simulating Brownian motion).
-    $$ s_{next}(x) = s(x) + \frac{\alpha}{2} (s_{avg} - s(x)) $$
-2.  **Boundary Reception**: Cells adjacent to existing ice ($s \ge 1.0$) become "receptive".
-3.  **Freezing (Addition)**: Receptive cells absorb vapour ($\gamma$) from the supersaturated background.
-    $$ s_{next}(x) = s(x) + \gamma $$
+Instead of writing massive, mathematically complicated Partial Differential Equations to describe how water freezes, the engine uses **three simple, purely local rules** evaluated for every single pixel (cell) on the grid thousands of times per second.
 
-### 2. Visualisation Features
+### 1. The Cellular Automata Cycle
+
+During every step (or "tick") of the simulation, the engine executes the following logic loop for every hex-cell on the 2D grid:
+
+```mermaid
+flowchart TD
+    %% Base State
+    Start(("Start of Step 't'"))
+    
+    %% The Three Core Phases
+    subgraph Step1 ["Step 1: Reception Check"]
+        Identify["Identify Receptive Boundary"]
+        Check["Does cell neighbor existing ice? (mass ≥ 1.0)"]
+    end
+    
+    subgraph Step2 ["Step 2: Phase Separation"]
+        SplitLiquid["Liquid State (Vapor)"]
+        SplitSolid["Solid State (Crystal)"]
+    end
+    
+    subgraph Step3 ["Step 3: Growth & Diffusion"]
+        Freeze["+ γ (Gamma)\nAbsorb background vapor"]
+        Diffuse["+ α (Alpha)\nAverage vapor with 6 neighbors"]
+    end
+    
+    %% Recombination
+    End(("Recombine for Step 't+1'"))
+
+    %% Logic Flow
+    Start --> Identify
+    Identify --> Check
+    Check -- Yes --> SplitSolid
+    Check -- No --> SplitLiquid
+    
+    SplitSolid --> Freeze
+    SplitLiquid --> Diffuse
+    
+    Freeze --> End
+    Diffuse --> End
+    
+    End -.->|"Loop 10,000+ times"| Start
+```
+
+#### Identify Receptive Boundary
+Because we operate on a **Hexagonal Grid** mapped to a standard rectangular 2D Numpy array, the engine uses "Odd-r" offset logic (meaning every odd row is shifted half a step right) to reliably check a cell's 6 immediate neighbors. 
+
+If any neighbor possesses a total mass $\ge 1.0$, the current cell is mathematically flagged as "Receptive" (it is touching the outer edge of the snowflake). 
+
+#### The Phase Split
+To maintain mass conservation and logical consistency during mathematical operations, the cell's current mass is split into a theoretical `Vapor` array and `Crystal` array:
+* If the cell is **Receptive** or already Ice, its entire mass drops into the `Crystal` array.
+* If the cell is empty space, its mass stays in the `Vapor` array.
+
+#### Apply the Physics Rules ($α$ and $γ$)
+This is where the user's parameters finally interact with the grid:
+* **Growth ($γ$)**: All `Crystal` cells absorb $\gamma$ amount of mass from the "background" supersaturated atmosphere. This simple addition controls how fast the crystal physically fattens.
+* **Diffusion ($α$)**: All `Vapor` cells look at their 6 neighbors. They calculate the average local vapor amount and "slide" a fraction ($\alpha$) of their own mass toward that local average. This simulates atmospheric Brownian motion, feeding vapor into the hungry crystal boundary!
+
+### 2. Optimization: CPU vs. GPU
+A 600x600 grid means 360,000 cells to check *every single tick*. Over 10,000 ticks, that's **3.6 Billion** cellular updates per simulation. 
+
+Doing this in raw Python (`for r in rows: ...`) would take hours per snowflake. The project heavily relies on two specialized compilers to achieve realtime performance:
+
+1. **CPU (`simul_step_reiter`)**: Written dynamically using `@jit(nopython=True)`. This Numba decorator compiles the Python nested `for`-loops directly into optimized C machine code just-in-time, allowing the CPU to sweep the entire array in milliseconds.
+2. **GPU (`SnowflakeGPU`)**: For users with an NVIDIA graphics card, the `engine.py` implements a completely custom **CUDA** kernel. It slices the 2D grid into 16x16 `Threads Per Block`, assigning thousands of simultaneous mini-processors to calculate the *Reception*, *Growth*, and *Diffusion* steps perfectly in parallel, offloading the mathematical burden completely from the host CPU.
+
+### 3. Visualisation Features
 *   **Standard Mass View**: Renders the ice crystal in "Ice Blue", with opacity determined by mass density.
 *   **Rainbow Time-Evolution**: A novel visualisation where colour represents the **Time of Freezing**.
     *   **Blue/Green**: Old ice (core).
