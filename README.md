@@ -5,6 +5,14 @@
 
 ---
 
+## 🔗 Project Links & Media
+* **YouTube Visualizations**: Watch full-length crystal growth animations on the [@AxiomGridSnowflakeChione2026](https://www.youtube.com/@AxiomGridSnowflakeChione2026) channel.
+* **Repository Outputs**: Raw MP4 animations and high-resolution static images are available inside the [`results/` directory](https://github.com/axiomgrid/snowflake-chione-2026/tree/main/results).
+* **GitHub Pages Dashboards**: Interactive data viewers and tools are hosted at [axiomgrid.github.io/snowflake-chione-2026](https://axiomgrid.github.io/snowflake-chione-2026/).
+    * Explore the **[Interactive 3D Morphospace Dashboard](https://axiomgrid.github.io/snowflake-chione-2026/viz/viz_3d.html)** to visually navigate the shape space!
+
+---
+
 ## 🔬 Scientific Overview
 
 Snowflake formation is a classic example of pattern formation in non-equilibrium thermodynamics. While the six-fold symmetry of ice is due to the molecular structure of the water crystal lattice, the complex branching patterns (dendrites) arise from a macroscopic instability known as the **Mullins-Sekerka instability**.
@@ -43,7 +51,7 @@ The system evolves in discrete time steps ($t$) according to three rules:
 | Standard View (Mass) | Rainbow View (Time) |
 | :---: | :---: |
 | ![Blue Ice](assets/snowflake_Alpha2.50_Gamma0.0010_Beta0.4.png) | ![Rainbow](assets/snowflake_Alpha2.50_Gamma0.0010_Beta0.4_Time.png) |
-| [Video Animation](assets/snowflake_Alpha1.50_Gamma0.0050.mp4) | [Rainbow Animation](assets/rainbow_Alpha1.50_Gamma0.0050.mp4) |
+| [Mass Snowflake — α=2.50, γ=0.001 (T≈-20°C)](https://www.youtube.com/watch?v=Ncc9eWRct0w) | [Rainbow Snowflake — α=2.50, γ=0.001 (T≈-20°C)](https://www.youtube.com/watch?v=lIz5MzmAHKM) |
 
 ### 3. Phase Diagrams
 We conduct massive parameter sweeps to map the ($\alpha, \gamma$) space, generating:
@@ -59,27 +67,32 @@ The project is organized as follows:
 ```ascii
 snowflake2026/
 ├── src/
-│   ├── main.py           # Unified entry point (CLI & Orchestrator)
-│   ├── engine.py         # Physics Kernels (CPU & GPU/Numba)
-│   ├── video_writer.py   # H.265 Video Encoding Logic
-│   ├── plotting.py       # Nakaya Diagram & Data Visualization
-│   ├── utils.py          # Metric calculations & Helpers
-│   └── viz.py            # Matplotlib Rendering utilities
+│   ├── engine.py           # Physics Kernels (CPU & GPU/Numba)
+│   ├── video_writer.py     # H.265 Video Encoding Logic
+│   ├── plotting.py         # Nakaya Diagram & Data Visualization
+│   ├── utils.py            # Metric calculations & Helpers
+│   ├── viz.py              # Matplotlib Rendering utilities
+│   ├── cli.py              # Command Line Interface mapping
+│   ├── research.py         # MAP-Elites exploration algorithms
+│   ├── viz_3d_builder.py   # Interactive HTML dashboard generator
+│   └── main.py             # Internal entry point script
 ├── docs/
 │   ├── ExperimentDesign.md # Detailed Physics Theory
 │   └── METRICS.md          # Definitions of CSV columns
-├── results/              # Simulation Outputs
-│   └── Run_.../          # Timestamped Run Directory
-│       ├── Intermediate/ # Static PNG Snapshots
-│       ├── Videos/       # MP4 Animations (Standard & Rainbow)
-│       └── SpaceTime/    # 3D Visualization Stacks
-├── Makefile              # Automation Commands
-└── requirements.txt      # Python Dependencies
+├── results/                # Simulation Outputs
+│   └── Run_.../            # Timestamped Run Directory
+│       ├── Intermediate/   # Static PNG Snapshots
+│       ├── Videos/         # MP4 Animations (Standard & Rainbow)
+│       └── SpaceTime/      # 3D Visualization Stacks
+├── Makefile                # Automation Commands
+└── requirements.txt        # Python Dependencies
 ```
 
 ---
 
 ## 🚀 Quick Start
+
+> **Note**: For full comprehensive instructions on setting up, testing, and running your own custom simulation sweeps and exploring shape space, please consult the complete [src/README.md](src/README.md).
 
 ### Prerequisites
 *   Python 3.8+
