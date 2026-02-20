@@ -162,8 +162,8 @@ snowflake2026/
 ### Setup
 ```bash
 # 1. Clone only the release files
-git clone ...
-cd snowflake2026
+git clone --branch only-code --depth 1 https://github.com/axiomgrid/snowflake-chione-2026.git
+cd snowflake-chione-2026/
 
 # 2. auto-setup (creates venv)
 make setup
