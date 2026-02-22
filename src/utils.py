@@ -37,7 +37,7 @@ def calculate_metrics(grid):
     # Perimeter Estimation (Count frozen cells with < 4 frozen neighbors)
     # Simple convolution-like approach
     # Up, Down, Left, Right neighbors
-    padded = np.pad(frozen, 1, mode='constant', constant_values=0)
+    padded = np.pad(frozen.astype(int), 1, mode='constant', constant_values=0)
     neighbors = (padded[:-2, 1:-1] + padded[2:, 1:-1] + 
                  padded[1:-1, :-2] + padded[1:-1, 2:])
     
