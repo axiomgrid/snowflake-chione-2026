@@ -1,5 +1,5 @@
 # Snowflake Growth Simulation (Reiter Model)
-**Author: Lorenzo Granado**
+**Vibecoded by: Lorenzo Granado**
 
 > **Abstract**: This project implements a high-performance computational physics simulation of snowflake growth using the Reiter Cellular Automata model. By simulating the competing physical processes of vapor diffusion and deposition on a 2D hexagonal grid, we successfully reproduce the complex, branching morphologies observed in nature with striking beauty. Our results confirm that the transition from simple plate-like crystals to complex dendritic structures can be modelled purely through local interaction rules, aligning with theoretical predictions of phase transitions in crystal growth. The simulation generates high-resolution visualisations, including phase diagrams and 3D time-evolution structures, offering new insights into the non-equilibrium dynamics of ice formation.
 
